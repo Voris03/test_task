@@ -30,6 +30,7 @@
     </div>
 
     <script>
+        // Обработчик события keyup для поля ввода
         var filterNameInput = document.querySelector('#search_form input[name="filter_name"]');
         filterNameInput.addEventListener('keyup', function() {
             var input = this;
@@ -43,9 +44,15 @@
                 clear.style.display = 'none';
             }
 
-            // Пример добавления текста в .results-wrapper (замените на вашу логику получения данных)
             resultsWrapper.innerHTML = '<div>Результаты поиска для: ' + input.value + '</div>';
         });
+
+        // Обработчик события click для крестика очистки
+        var clearButton = document.querySelector('#search_form .clear');
+        clearButton.addEventListener('click', function() {
+            clearSearch();
+        });
+
     </script>
 </body>
 </html>

@@ -30,6 +30,28 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Очистка при клике вне области #search_form
+        document.addEventListener('click', function(e) {
+            var searchForm = document.getElementById('search_form');
+            var isClickInsideSearchForm = searchForm.contains(e.target);
+
+            if (!isClickInsideSearchForm) {
+                clearSearch();
+            }
+        });
+
+        // Функция для очистки полей и результатов
+        function clearSearch() {
+            var input = document.querySelector('#search_form input[name="filter_name"]');
+            var clear = document.querySelector('#search_form .clear');
+            var resultsWrapper = document.querySelector('#search_form .results-wrapper');
+
+            input.value = ''; // Очистить поле ввода
+            clear.style.display = 'none';  // Скрыть крестик
+            resultsWrapper.innerHTML = ''; // Очистить результаты поиска
+        }
+
         // Обработчик события keyup для поля ввода
         var filterNameInput = document.querySelector('#search_form input[name="filter_name"]');
         filterNameInput.addEventListener('keyup', function() {
@@ -52,7 +74,7 @@
         clearButton.addEventListener('click', function() {
             clearSearch();
         });
-
+    });
     </script>
 </body>
 </html>
